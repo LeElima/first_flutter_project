@@ -1,3 +1,4 @@
+import 'package:first_project/app_controller.dart';
 import 'package:flutter/material.dart';
 
 
@@ -16,18 +17,54 @@ class HomePageState extends State<HomePage>{
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-        child: Center(
-          child: GestureDetector(
-            child: Text("Contador: $counter"),
-            onTap: () {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Texto'),
+        backgroundColor: Colors.red,
+      ),
+      body: Center(
+        child: Switch(
+            value: AppController.instance.isDarkTheme, 
+            onChanged: (value){
               setState(() {
-                counter ++;
+                AppController.instance.changeTheme();
               });
-            } ,
-            )
-            ),
-      );
+            }),
+      ),
+      // body: Center(
+      //       child: GestureDetector(
+      //           child: Text("Contador: $counter", 
+      //                       style: TextStyle(
+      //                               color: Colors.black,
+      //                               fontSize: 50
+      //                               )),
+      //           onTap: () {
+      //             setState(() {
+      //               counter ++;
+      //             });
+      //           },
+      //         )
+      //       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: (){
+          setState(() {
+            counter ++;
+          });
+        }),
+    );
+    // return  Container(
+    //     child: Center(
+    //       child: GestureDetector(
+    //         child: Text("Contador: $counter"),
+    //         onTap: () {
+    //           setState(() {
+    //             counter ++;
+    //           });
+    //         } ,
+    //         )
+    //         ),
+    //   );
   }
 
 }
