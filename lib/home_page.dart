@@ -21,15 +21,36 @@ class HomePageState extends State<HomePage>{
       appBar: AppBar(
         title: Text('Texto'),
         backgroundColor: Colors.red,
+        actions: [
+          //Botões na lateral direita
+          CustomSwitch()
+        ],
       ),
-      body: Center(
-        child: Switch(
-            value: AppController.instance.isDarkTheme, 
-            onChanged: (value){
-              setState(() {
-                AppController.instance.changeTheme();
-              });
-            }),
+      body:Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Contador : ${counter}"),
+            CustomSwitch(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.black,
+                ),
+                Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.black,
+                ),
+              ],
+            )
+          ],
+        ),
       ),
       // body: Center(
       //       child: GestureDetector(
@@ -67,4 +88,18 @@ class HomePageState extends State<HomePage>{
     //   );
   }
 
+}
+
+class CustomSwitch extends StatelessWidget {
+  // const CustomSwitch({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+            value: AppController.instance.isDarkTheme, 
+            onChanged: (value){
+                AppController.instance.changeTheme();
+              
+            });
+  }
 }
