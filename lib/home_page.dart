@@ -21,15 +21,13 @@ class HomePageState extends State<HomePage>{
       appBar: AppBar(
         title: Text('Texto'),
         backgroundColor: Colors.red,
+        actions: [
+          //Botões na lateral direita
+          CustomSwitch()
+        ],
       ),
       body: Center(
-        child: Switch(
-            value: AppController.instance.isDarkTheme, 
-            onChanged: (value){
-              setState(() {
-                AppController.instance.changeTheme();
-              });
-            }),
+        child: CustomSwitch(),
       ),
       // body: Center(
       //       child: GestureDetector(
@@ -67,4 +65,18 @@ class HomePageState extends State<HomePage>{
     //   );
   }
 
+}
+
+class CustomSwitch extends StatelessWidget {
+  // const CustomSwitch({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+            value: AppController.instance.isDarkTheme, 
+            onChanged: (value){
+                AppController.instance.changeTheme();
+              
+            });
+  }
 }
