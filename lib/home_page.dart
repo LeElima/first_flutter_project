@@ -34,7 +34,21 @@ class HomePageState extends State<HomePage>{
           children: [
             Text("Contador : ${counter}"),
             CustomSwitch(),
-            
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.black,
+                ),
+                Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.black,
+                ),
+              ],
+            )
           ],
         ),
       ),
